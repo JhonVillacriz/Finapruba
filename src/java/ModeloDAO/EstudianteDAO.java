@@ -43,7 +43,25 @@ public class EstudianteDAO implements CRUD{
 
     @Override
     public Estudiante buscarestudiante(int idestudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = " select *  "
+                        + " from estudiante  "
+                        + " where idestudiante = " + idestudiante + " ;";
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                e.setIdestudiante(rs.getInt("idestudiante"));
+                e.setNombre(rs.getString("nombre"));
+                e.setApellidos(rs.getString("apellidos"));
+                e.setDni(rs.getString("dni"));
+                e.setCodigo(rs.getString("codigo"));
+                e.setEstado(rs.getString("estado"));
+            }
+        } catch (Exception e) {
+        }
+        
+        return e;
     }
 
     @Override
@@ -66,7 +84,22 @@ public class EstudianteDAO implements CRUD{
 
     @Override
     public boolean editarestudiante(Estudiante estudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = " update estudiante "
+                        + " set "
+                        + " nombre = '"+ estudiante.getNombre() +"', "
+                        + " apellidos = '"+ estudiante.getApellidos() +"', "
+                        + " dni = '"+ estudiante.getDni() +"', "
+                        + " codigo = '"+ estudiante.getCodigo() +"', "
+                        + " estado = '"+ estudiante.getEstado() +"' "
+                        + " where "
+                        + " idestudiante = " + estudiante.getIdestudiante() + "; ";
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
 
     @Override
