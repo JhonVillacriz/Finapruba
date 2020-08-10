@@ -14,21 +14,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Listar Estudiantes</title>
+        <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div>
+        <div class="container">
             <h1>Listado de Estudiantes</h1>
-            <a href="Controlador?f_accion=agregarestudiante01">Agregar Nuevo Estudiante</a>
-            <table border="1">
+            <a class="btn btn-success" href="Controlador?f_accion=agregarestudiante01">Agregar Nuevo Estudiante</a>
+            <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>DNI</th>
-                        <th>Código</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Nombre</th>
+                        <th class="text-center">Apellidos</th>
+                        <th class="text-center">DNI</th>
+                        <th class="text-center">Código</th>
+                        <th class="text-center">Estado</th>
+                        <th class="text-center">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -51,10 +52,10 @@
                         <td><% out.print(estudiante.getCodigo()); %></td>
                         <td><% out.print(estudiante.getEstado()); %></td>
                         <td>
-                            <a href="Controlador?f_accion=editarestudiante01&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
+                            <a class="btn btn-warning" href="Controlador?f_accion=editarestudiante01&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
                                 Editar
                             </a>
-                            <a href="Controlador?f_accion=eliminarestudiante&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
+                            <a class="btn btn-danger" href="Controlador?f_accion=eliminarestudiante&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
                                 Eliminar
                             </a>
                         </td>
