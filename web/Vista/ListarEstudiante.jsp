@@ -18,6 +18,7 @@
     <body>
         <div>
             <h1>Listado de Estudiantes</h1>
+            <a href="Controlador?f_accion=agregarestudiante01">Agregar Nuevo Estudiante</a>
             <table border="1">
                 <thead>
                     <tr>

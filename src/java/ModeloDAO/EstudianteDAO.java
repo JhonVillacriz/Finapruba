@@ -48,7 +48,20 @@ public class EstudianteDAO implements CRUD{
 
     @Override
     public boolean agregarestudiante(Estudiante estudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = " insert into estudiante(nombre, apellidos, dni, codigo, estado)  "
+                        + " values( "
+                        + "'"+ estudiante.getNombre() +"', "
+                        + "'"+ estudiante.getApellidos() +"', "
+                        + "'"+ estudiante.getDni() +"', "
+                        + "'"+ estudiante.getCodigo() +"', "
+                        + "'"+ estudiante.getEstado() +"') ";
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
 
     @Override
