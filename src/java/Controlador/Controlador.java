@@ -103,6 +103,10 @@ public class Controlador extends HttpServlet {
             estudiante.setEstado(s_estado);
             estudianteDAO.editarestudiante(estudiante);
             acceso = listarestudiante;
+        }else if (s_accion.equals("eliminarestudiante")) {
+            int s_idestudiante = Integer.valueOf(request.getParameter("f_idestudiante"));
+            estudianteDAO.eliminarestudiante(s_idestudiante);
+            acceso = listarestudiante;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

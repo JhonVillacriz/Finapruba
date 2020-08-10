@@ -104,7 +104,16 @@ public class EstudianteDAO implements CRUD{
 
     @Override
     public boolean eliminarestudiante(int idestudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consulta = " delete from estudiante "
+                        + " where "
+                        + " idestudiante = " + idestudiante + "; ";
+        try {
+            con = cn.getConnection();
+            pst = con.prepareStatement(consulta);
+            pst.executeUpdate();
+        } catch (Exception e) {
+        }
+        return false;
     }
     
 }

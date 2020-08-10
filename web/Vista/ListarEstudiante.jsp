@@ -54,7 +54,9 @@
                             <a href="Controlador?f_accion=editarestudiante01&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
                                 Editar
                             </a>
-                            <a href="">Eliminar</a>
+                            <a href="Controlador?f_accion=eliminarestudiante&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
+                                Eliminar
+                            </a>
                         </td>
                     </tr>
                     <%    }
