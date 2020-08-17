@@ -5,23 +5,29 @@
  */
 package Controlador;
 
-import Modelo.Estudiante;
-import ModeloDAO.EstudianteDAO;
+import Modelo.Carrera;
+import ModeloDAO.CarreraDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class Controlador extends HttpServlet {
-    String listarestudiante = "Vista/ListarEstudiante.jsp";
-    String agregarestudiante = "Vista/AgregarEstudiante.jsp";
-    String editarestudiante = "Vista/EditarEstudiante.jsp";
-    Estudiante estudiante = new Estudiante();
-    EstudianteDAO estudianteDAO = new EstudianteDAO();
-    
+/**
+ *
+ * @author MONARCA
+ */
+@WebServlet(name = "ControladorCarrera", urlPatterns = {"/ControladorCarrera"})
+public class ControladorCarrera extends HttpServlet {
+    String listarcarrera = "Vista/ListarCarrera.jsp";
+    String agregarcarrera = "Vista/AgregarCarrera.jsp";
+    String editarcarrera = "Vista/EditarCarrera.jsp";
+    Carrera carrera = new Carrera();
+    CarreraDAO carreraDAO = new CarreraDAO();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,10 +45,10 @@ public class Controlador extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
+            out.println("<title>Servlet ControladorCarrera</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ControladorCarrera at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,64 +65,46 @@ public class Controlador extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+        throws ServletException, IOException {
         String acceso = "";
         String s_accion = request.getParameter("f_accion");
-        if (s_accion.equalsIgnoreCase("listarestudiante")) {
-            acceso = listarestudiante;
-        }else if (s_accion.equalsIgnoreCase("agregarestudiante01")) {
-            acceso = agregarestudiante;
-        }else if (s_accion.equalsIgnoreCase("agregarestudiante02")) {
+        if (s_accion.equalsIgnoreCase("listarcarrera")) {
+            acceso = listarcarrera;
+        }else if (s_accion.equalsIgnoreCase("agregarcarrera01")) {
+            acceso = agregarcarrera;
+        }else if (s_accion.equalsIgnoreCase("agregarcarrera02")) {
             String s_nombre = request.getParameter("f_nombre");
-            String s_apellidos = request.getParameter("f_apellidos");
-            String s_dni = request.getParameter("f_dni");
-            String s_codigo = request.getParameter("f_codigo");
-            String s_direccion = request.getParameter("f_direccion");
-            String s_estado = request.getParameter("f_estado");
-            estudiante.setNombre(s_nombre);
-            estudiante.setApellidos(s_apellidos);
-            estudiante.setDni(s_dni);
-            estudiante.setCodigo(s_codigo);
-            estudiante.setDireccion(s_direccion);
-            estudiante.setEstado(s_estado);
-            estudianteDAO.agregarestudiante(estudiante);
-            acceso = listarestudiante;
             
-        }else if (s_accion.equalsIgnoreCase("editarestudiante01")) {
-            request.setAttribute("f_idestudiante", request.getParameter("f_idestudiante"));
-            acceso = editarestudiante;
-        }else if (s_accion.equalsIgnoreCase("editarestudiante02")) {
-            int s_idestudiante = Integer.valueOf(request.getParameter("f_idestudiante"));
+            String s_estado = request.getParameter("f_estado");
+            carrera.setNombre(s_nombre);
+            
+            carrera.setEstado(s_estado);
+            carreraDAO.agregarcarrera(carrera);
+            acceso = listarcarrera;
+            
+        }else if (s_accion.equalsIgnoreCase("editarcarrera01")) {
+            request.setAttribute("f_idcarrera", request.getParameter("f_idcarrera"));
+            acceso = editarcarrera;
+        }else if (s_accion.equalsIgnoreCase("editarcarrera02")) {
+            int s_idcarrera = Integer.valueOf(request.getParameter("f_idcarrera"));
             String s_nombre = request.getParameter("f_nombre");
-            String s_apellidos = request.getParameter("f_apellidos");
-            String s_dni = request.getParameter("f_dni");
-            String s_codigo = request.getParameter("f_codigo");
-            String s_direccion = request.getParameter("f_direccion");
+            
             String s_estado = request.getParameter("f_estado");
             
-            estudiante.setIdestudiante(s_idestudiante);            
-            estudiante.setNombre(s_nombre);
-            estudiante.setApellidos(s_apellidos);
-            estudiante.setDni(s_dni);
-            estudiante.setCodigo(s_codigo);
-            estudiante.setDireccion(s_direccion);
-            estudiante.setEstado(s_estado);
-            estudianteDAO.editarestudiante(estudiante);
-            acceso = listarestudiante;
-        }else if (s_accion.equals("eliminarestudiante")) {
-            int s_idestudiante = Integer.valueOf(request.getParameter("f_idestudiante"));
-            estudianteDAO.eliminarestudiante(s_idestudiante);
-            acceso = listarestudiante;
+            carrera.setIdcarrera(s_idcarrera);            
+            carrera.setNombre(s_nombre);
+            carrera.setEstado(s_estado);
+            carreraDAO.editarcarrera(carrera);
+            acceso = listarcarrera;
+        }else if (s_accion.equals("eliminarcarrera")) {
+            int s_idcarrera = Integer.valueOf(request.getParameter("f_idcarrera"));
+            carreraDAO.eliminarcarrera(s_idcarrera);
+            acceso = listarcarrera;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);
     }
-    
 
-    
-    
-    
-    
     /**
      * Handles the HTTP <code>POST</code> method.
      *
