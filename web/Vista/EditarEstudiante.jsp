@@ -30,15 +30,20 @@
                         </tr>
                         <tr>
                             <td class="text-right">"Apellido</td>
-                            <td><input class="form-control" type="text" name="f_apellidos" value="<% out.println(estudiante.getApellidos()); %>" maxlength="40" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_apellidos" value="<% out.println(estudiante.getApellidos()); %>" maxlength="50" size="20" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">DNI</td>
                             <td><input class="form-control" type="text" name="f_dni" value="<% out.println(estudiante.getDni()); %>" maxlength="8" size="8" /></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Codigo</td>
-                            <td><input class="form-control" type="text" name="f_codigo" value="<% out.println(estudiante.getCodigo()); %>" maxlength="12" size="12" /></td>
+                            <td class="text-right">Código</td>
+                            <td><input class="form-control" type="text" name="f_codigo" value="<% out.println(estudiante.getCodigo()); %>" maxlength="9" size="9" /></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="text-right">Dirección</td>
+                            <td><input class="form-control" type="text" name="f_direccion" value="<% out.println(estudiante.getDireccion()); %>" maxlength="50" size="20" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">Estado</td>

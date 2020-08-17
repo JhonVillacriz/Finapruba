@@ -1,8 +1,4 @@
-<%-- 
-    Document   : AgregarEstudiante
-    Created on : 10/08/2020, 09:13:57 AM
-    Author     : TuNombre
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,16 +24,22 @@
                         </tr>
                         <tr>
                             <td class="text-right">Apellido</td>
-                            <td><input class="form-control" type="text" name="f_apellidos" value="" maxlength="40" size="20" /></td>
+                            <td><input class="form-control" type="text" name="f_apellidos" value="" maxlength="50" size="20" /></td>
                         </tr>
                         <tr>
                             <td class="text-right">DNI</td>
                             <td><input class="form-control" type="text" name="f_dni" value="" maxlength="8" size="8" /></td>
                         </tr>
                         <tr>
-                            <td class="text-right">Codigo</td>
-                            <td><input class="form-control" type="text" name="f_codigo" value="" maxlength="12" size="12" /></td>
+                            <td class="text-right">Código</td>
+                            <td><input class="form-control" type="text" name="f_codigo" value="" maxlength="9" size="9" /></td>
                         </tr>
+                        <tr>
+                            <td class="text-right">Direción</td>
+                            <td><input class="form-control" type="text" name="f_direccion" value="" maxlength="50" size="20" /></td>
+                        </tr>
+                        
+                        
                         <tr>
                             <td class="text-right">Estado</td>
                             <td><input class="form-control" type="text" name="f_estado" value="" maxlength="1" size="2" /></td>
@@ -49,6 +51,8 @@
                                     
                             </td>
                         </tr>
+                        
+                        
                         
                     </tbody>
                 </table>

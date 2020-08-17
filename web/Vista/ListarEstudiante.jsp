@@ -1,8 +1,4 @@
-<%-- 
-    Document   : ListarEstudiante
-    Created on : 10/08/2020, 09:13:41 AM
-    Author     : TuNombre
---%>
+
 
 <%@page import="java.util.Iterator"%>
 <%@page import="Modelo.Estudiante"%>
@@ -28,6 +24,7 @@
                         <th class="text-center">Apellidos</th>
                         <th class="text-center">DNI</th>
                         <th class="text-center">Código</th>
+                        <th class="text-center">Dirección</th>
                         <th class="text-center">Estado</th>
                         <th class="text-center">Acciones</th>
                     </tr>
@@ -50,6 +47,7 @@
                         <td><% out.print(estudiante.getApellidos()); %></td>
                         <td><% out.print(estudiante.getDni()); %></td>
                         <td><% out.print(estudiante.getCodigo()); %></td>
+                        <td><% out.print(estudiante.getDireccion()); %></td>
                         <td><% out.print(estudiante.getEstado()); %></td>
                         <td>
                             <a class="btn btn-warning" href="Controlador?f_accion=editarestudiante01&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">
